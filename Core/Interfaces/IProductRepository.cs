@@ -13,7 +13,7 @@ namespace Core.Interfaces
          Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync(); 
          Task<IReadOnlyList<ProductType>> GetProductTypesAsync(); 
 
-
+        //Since we are repeating the code and the only change here is the generic roperty so we will use the generic repo.
 
     }
 }
