@@ -3,9 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
+using API.Helpers;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,14 +48,26 @@ namespace API.Controllers
 
         [HttpGet]
         // public async Task<ActionResult<List<Product>>> GetProducts()
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
+            [FromQuery] ProductSpecParams productSpecParams
+            )
         {
 
-            var spec = new ProductsWithTypesAndBrandsSpecification();
+            // var spec = new ProductsWithTypesAndBrandsSpecification();
+            var spec = new ProductsWithTypesAndBrandsSpecification(productSpecParams);
+            
+            var countSpec = new ProductsWithFiltersForCountSpecification(productSpecParams);
+
+            var totalItems = await _productsRepo.CountAsync(countSpec);
+
 
             // var products = await _repo.GetProductsAsync();
             // var products = await _productsRepo.ListAllAsync();
             var products = await _productsRepo.ListAsync(spec);
+
+
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
+
 
             // return Ok(products);
 
@@ -62,7 +76,7 @@ namespace API.Controllers
             // {
             //     Id = product.Id,
             //     Name = product.Name,
-            //     Description = product.Description,
+            //     Description = product.Description, 
             //     PictureUrl = product.PictureUrl,
             //     Price = product.Price,
             //     ProductBrand = product.ProductBrand.Name,
@@ -70,7 +84,7 @@ namespace API.Controllers
             // }).ToList();
 
             //Using Auto Mapper
-            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products));
+            return Ok(new Pagination<ProductToReturnDto>(productSpecParams.PageIndex,productSpecParams.PageSize,totalItems,data));
 
         }
 
