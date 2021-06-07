@@ -1,2 +1,8 @@
+<app-nav-bar></app-nav-bar>
 <h1>Welcome to {{ title }}</h1>
-<button mat-raised-button color="primary">Basic</button>
+
+<ul>
+    <li class="list-unstyled" *ngFor="let product of products">
+        {{product.name}}
+    </li>
+</ul>
