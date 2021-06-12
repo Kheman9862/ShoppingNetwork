@@ -1,0 +1,85 @@
+.sub-header {
+  font-family: "Helvetica", sans-serif;
+  font-size: 1.125em;
+  margin-left: 0;
+}
+
+.margin-set {
+  margin-top: 20px;
+}
+
+.margin-set2 {
+  margin-top: 16px;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.5em 0px !important;
+}
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.5em;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  width: 133.33333%;
+}
+
+.primary {
+  color: burlywood;
+}
+
+.box-gap {
+  margin-top: 20px;
+}
+
+.list-gap {
+  margin-bottom: -4px;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+  padding: 0 4px !important;
+}
+
+.list-active {
+  background-color: cadetblue !important;
+  color: white;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: burlywood;
+  color: white;
+  border: 1px solid burlywood;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination-gap {
+  margin: 44px 0;
+}

@@ -1,21 +1,42 @@
 <mat-toolbar class="align-bar">
-    <span>
-    <img class="nav-img" src="../../../assets/logo.svg" alt="Company's logo">
-    </span>
-    <span>
-        <button mat-button>Home</button>
-        <button mat-button>Shop</button>
-        <button mat-button>Contact</button>
-    </span>
-    <span>
-        <button mat-icon-button class="icon-gap" aria-label="Example icon-button with menu icon">
-            <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
-        </button>
-        <button mat-stroked-button color="primary" class="item-gap" aria-label="Example icon-button with heart icon">
-    Login
+  <span>
+    <img class="nav-img" src="../../../assets/logo.svg" alt="Company's logo" />
+  </span>
+  <span>
+    <a
+      mat-button
+      [routerLink]="['/']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a mat-button [routerLink]="['/shop']" routerLinkActive="active">Shop</a>
+    <a mat-button [routerLink]="['/contact']" routerLinkActive="active"
+      >Contact</a
+    >
+  </span>
+  <span>
+    <button
+      mat-icon-button
+      class="icon-gap"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
     </button>
-    <button mat-stroked-button color="primary" aria-label="Example icon-button with share icon">
-        Sign up
+    <button
+      mat-stroked-button
+      color="primary"
+      class="item-gap"
+      aria-label="Example icon-button with heart icon"
+    >
+      Login
     </button>
-</span>
+    <button
+      mat-stroked-button
+      color="primary"
+      aria-label="Example icon-button with share icon"
+    >
+      Sign up
+    </button>
+  </span>
 </mat-toolbar>

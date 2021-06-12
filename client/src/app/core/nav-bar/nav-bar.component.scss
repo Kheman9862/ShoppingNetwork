@@ -1,20 +1,34 @@
 .align-bar {
-justify-content: space-between;
-position: sticky;
-position: -webkit-sticky; /* For macOS/iOS Safari */
-top: 0; /* Sets the sticky toolbar to be on top */
-z-index: 1000; 
+  justify-content: space-between;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
 }
 
-.nav-img{
-    width: 40%;
-    margin-top: 10px;
+.nav-img {
+  width: 40%;
+  margin-top: 10px;
 }
 
-.icon-gap{
-    margin-right: 16px;
+.icon-gap {
+  margin-right: 16px;
 }
 
-.item-gap{
-    margin-right: 8px;
+.item-gap {
+  margin-right: 8px;
+}
+
+a {
+  &.active {
+    color: burlywood;
+  }
+}
+
+.logo {
+  cursor: pointer;
+
+  &.focus {
+    outline: none;
+  }
 }

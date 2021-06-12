@@ -1,0 +1,32 @@
+<div *ngIf="product">
+  <div fxLayout="column" fxLayoutGap="40px">
+    <div fxLayout="row" fxLayoutGap="360px">
+      <div>
+        <img src="{{ product.pictureUrl }}" alt="{{ product.name }}" />
+      </div>
+      <div fxLayout="column">
+        <div>
+          <h2 mat-h2>
+            <strong>{{ product.name }}</strong>
+          </h2>
+          <p>{{ product.price | currency }}</p>
+        </div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="row" fxLayoutGap="4px">
+            <mat-icon color="warn">add_circle</mat-icon>
+            <span fxFlexAlign="center" class="quantity-align">2</span>
+            <mat-icon color="warn">remove_circle</mat-icon>
+          </div>
+          <button mat-raised-button color="primary" class="button-style">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="20px">
+      <h1 mat-h1>Description</h1>
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+</div>
