@@ -10,12 +10,17 @@ import { TestErrorComponent } from './test-error/test-error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SectionHeaderComponent } from './section-header/section-header.component';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 @NgModule({
   declarations: [
     NavBarComponent,
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    SectionHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -23,9 +28,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatToolbarModule,
     MatBadgeModule,
+    MatCardModule,
     MatSnackBarModule,
     RouterModule,
+    FlexLayoutModule,
+    BreadcrumbModule,
   ],
-  exports: [NavBarComponent],
+  exports: [NavBarComponent, SectionHeaderComponent],
 })
 export class CoreModule {}

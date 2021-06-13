@@ -1,0 +1,18 @@
+<ng-container *ngIf="breadcrumb$ | async as breadcrumbs">
+  <mat-card
+    *ngIf="
+      breadcrumbs.length > 0 &&
+      breadcrumbs[breadcrumbs.length - 1].label !== 'Home'
+    "
+    class="design-card"
+  >
+    <div class="card-content" fxLayout="row" fxLayoutGap="50px">
+      <h1 mat-h1 fxFlex="70%" class="title">
+        {{
+          breadcrumbs.length > 0 && breadcrumbs[breadcrumbs.length - 1].label
+        }}
+      </h1>
+      <xng-breadcrumb></xng-breadcrumb>
+    </div>
+  </mat-card>
+</ng-container>

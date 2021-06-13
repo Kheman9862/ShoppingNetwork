@@ -1,136 +1,138 @@
-<div fxLayout fxLayoutGap="20px">
-  <!-- //Part-1 -->
-  <div fxLayout="column" fxLayoutAlign="flex-start">
-    <div>
-      <h2 class="mat-h2 primary">Sort</h2>
-      <mat-form-field appearance="outline">
-        <mat-label>Preference</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let sortOption of sortOptions"
-            [value]="sortOption.value"
-            (click)="onSortSelected(sortOption.value)"
-          >
-            {{ sortOption.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div>
-      <h2 class="mat-h2 primary list-gap">Brands</h2>
-      <mat-action-list
-        *ngFor="let brand of brands"
-        [value]="brand.Id"
-        (click)="onBrandSelected(brand.id)"
-      >
-        <button
-          [class.list-active]="brand.id === this.shopParams.brandId"
-          mat-list-item
-        >
-          {{ brand.name }}
-        </button>
-      </mat-action-list>
-    </div>
-
-    <div class="box-gap">
-      <h2 class="mat-h2 primary list-gap">Types</h2>
-      <mat-action-list
-        *ngFor="let type of types"
-        [value]="type.Id"
-        (click)="onTypeSelected(type.id)"
-      >
-        <button
-          [class.list-active]="type.id === this.shopParams.typeId"
-          mat-list-item
-        >
-          {{ type.name }}
-        </button>
-      </mat-action-list>
-    </div>
-  </div>
-
-  <!-- Part-2 -->
-  <div fxLayout="column" style="width: 100%">
-    <div fxLayout="row" fxLayoutAlign="space-between">
-      <div *ngIf="totalCount && totalCount > 0">
-        <h4 class="sub-header margin-set">
-          Showing
-          <strong
-            >{{
-              (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1
-            }}
-            -
-            {{
-              this.shopParams.pageNumber * this.shopParams.pageSize >
-              this.totalCount
-                ? this.totalCount
-                : this.shopParams.pageNumber * this.shopParams.pageSize
-            }}</strong
-          >
-          of <strong>{{ this.totalCount }}</strong> Results
-        </h4>
-      </div>
-
-      <div *ngIf="totalCount === 0">
-        <h4 class="sub-header margin-set">
-          There are <strong> 0 </strong> results for this page
-        </h4>
-      </div>
+<ng-container *ngIf="types && brands">
+  <div fxLayout fxLayoutGap="20px">
+    <!-- //Part-1 -->
+    <div fxLayout="column" fxLayoutAlign="flex-start">
       <div>
-        <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
-          <div class="margin-set2" fxFlex="30%">
-            <mat-form-field appearance="outline">
-              <mat-label>Search</mat-label>
-              <input
-                (keyup.enter)="onSearch()"
-                #search
-                matInput
-                placeholder="Search"
-              />
-            </mat-form-field>
-          </div>
-          <div class="margin-set" fxLayoutGap="4px">
-            <button (click)="onSearch()" mat-stroked-button color="primary">
-              Search
-            </button>
-            <button (click)="onReset()" mat-stroked-button color="warn">
-              Reset
-            </button>
-          </div>
-        </div>
+        <h2 class="mat-h2 primary">Sort</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Preference</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let sortOption of sortOptions"
+              [value]="sortOption.value"
+              (click)="onSortSelected(sortOption.value)"
+            >
+              {{ sortOption.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-    </div>
 
-    <div class="content">
-      <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div
-          fxFlex="25%"
-          fxFlex.xs="100%"
-          fxFlex.sm="33%"
-          *ngFor="
-            let item of products
-              | paginate
-                : {
-                    itemsPerPage: this.shopParams.pageSize,
-                    currentPage: p,
-                    totalItems: totalCount
-                  }
-          "
+      <div>
+        <h2 class="mat-h2 primary list-gap">Brands</h2>
+        <mat-action-list
+          *ngFor="let brand of brands"
+          [value]="brand.Id"
+          (click)="onBrandSelected(brand.id)"
         >
-          <app-product-item [product]="item"></app-product-item>
-        </div>
+          <button
+            [class.list-active]="brand.id === this.shopParams.brandId"
+            mat-list-item
+          >
+            {{ brand.name }}
+          </button>
+        </mat-action-list>
+      </div>
+
+      <div class="box-gap">
+        <h2 class="mat-h2 primary list-gap">Types</h2>
+        <mat-action-list
+          *ngFor="let type of types"
+          [value]="type.Id"
+          (click)="onTypeSelected(type.id)"
+        >
+          <button
+            [class.list-active]="type.id === this.shopParams.typeId"
+            mat-list-item
+          >
+            {{ type.name }}
+          </button>
+        </mat-action-list>
       </div>
     </div>
 
-    <div
-      fxLayout="row"
-      fxLayoutAlign="center"
-      *ngIf="totalCount && totalCount > 0"
-      class="pagination-gap"
-    >
-      <pagination-controls (pageChange)="onPageChange($event)">
-      </pagination-controls>
+    <!-- Part-2 -->
+    <div fxLayout="column" style="width: 100%">
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div *ngIf="totalCount && totalCount > 0">
+          <h4 class="sub-header margin-set">
+            Showing
+            <strong
+              >{{
+                (this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1
+              }}
+              -
+              {{
+                this.shopParams.pageNumber * this.shopParams.pageSize >
+                this.totalCount
+                  ? this.totalCount
+                  : this.shopParams.pageNumber * this.shopParams.pageSize
+              }}</strong
+            >
+            of <strong>{{ this.totalCount }}</strong> Results
+          </h4>
+        </div>
+
+        <div *ngIf="totalCount === 0">
+          <h4 class="sub-header margin-set">
+            There are <strong> 0 </strong> results for this page
+          </h4>
+        </div>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
+            <div class="margin-set2" fxFlex="30%">
+              <mat-form-field appearance="outline">
+                <mat-label>Search</mat-label>
+                <input
+                  (keyup.enter)="onSearch()"
+                  #search
+                  matInput
+                  placeholder="Search"
+                />
+              </mat-form-field>
+            </div>
+            <div class="margin-set" fxLayoutGap="4px">
+              <button (click)="onSearch()" mat-stroked-button color="primary">
+                Search
+              </button>
+              <button (click)="onReset()" mat-stroked-button color="warn">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="33%"
+            *ngFor="
+              let item of products
+                | paginate
+                  : {
+                      itemsPerPage: this.shopParams.pageSize,
+                      currentPage: p,
+                      totalItems: totalCount
+                    }
+            "
+          >
+            <app-product-item [product]="item"></app-product-item>
+          </div>
+        </div>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center"
+        *ngIf="totalCount && totalCount > 0"
+        class="pagination-gap"
+      >
+        <pagination-controls (pageChange)="onPageChange($event)">
+        </pagination-controls>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
