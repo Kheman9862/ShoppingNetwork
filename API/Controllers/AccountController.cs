@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
@@ -31,7 +30,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var user = await _userManager.FindByEmailFromClaimsPrinciple(User);//Video 174
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(User);
 
             return new UserDto
             {
