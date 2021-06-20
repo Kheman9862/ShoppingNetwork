@@ -33,6 +33,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { BasketModule } from './basket/basket.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -71,6 +72,7 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
     HomeModule,
     NgxSpinnerModule,
     MatCarouselModule,
+    BasketModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

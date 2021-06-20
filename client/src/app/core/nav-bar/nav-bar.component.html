@@ -20,13 +20,26 @@
     >
   </span>
   <span>
-    <button
+    <a
       mat-icon-button
       class="icon-gap"
       aria-label="Example icon-button with menu icon"
+      [routerLink]="['/basket']"
+      routerLinkActive="active"
     >
-      <mat-icon matBadge="15" matBadgeColor="warn">add_shopping_cart</mat-icon>
-    </button>
+      <mat-icon
+        *ngIf="basket$ | async as basket"
+        matBadge="{{ basket.items.length }}"
+        matBadgeColor="warn"
+        >add_shopping_cart</mat-icon
+      >
+      <mat-icon
+        *ngIf="!(basket$ | async) as basket"
+        matBadge="0"
+        matBadgeColor="warn"
+        >add_shopping_cart</mat-icon
+      >
+    </a>
     <button
       mat-stroked-button
       color="primary"

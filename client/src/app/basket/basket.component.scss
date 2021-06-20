@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+
+.brand-image {
+  max-width: 21%;
+}
+
+.product-width {
+  width: 30%;
+}
+
+.remove-width {
+  width: 11%;
+}
+
+.price-width {
+  width: 10%;
+}
+
+.qty-align {
+  text-align: center;
+}
+
+:host::ng-deep.mat-icon {
+  cursor: pointer !important;
+}

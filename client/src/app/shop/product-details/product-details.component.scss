@@ -5,3 +5,7 @@
 .quantity-align {
   margin-top: -2px;
 }
+
+:host::ng-deep.mat-icon {
+  cursor: pointer !important;
+}

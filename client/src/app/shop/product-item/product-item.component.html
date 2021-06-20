@@ -10,6 +10,8 @@
     <button mat-button routerLink="/shop/{{ product.id }}" color="primary">
       View
     </button>
-    <button mat-button color="warn">Add to cart</button>
+    <button mat-button color="warn" (click)="addItemToBasket()">
+      Add to cart
+    </button>
   </mat-card-actions>
 </mat-card>

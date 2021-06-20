@@ -1,0 +1,29 @@
+<div fxLayout="column">
+  <div class="background-title" style="padding: 1.2em">Order Summary</div>
+  <div fxLayout="column">
+    <p class="sub-contents">
+      <em>
+        Shipping costs will be added depending on choices made during
+        checkout</em
+      >
+    </p>
+    <ul style="list-style-type: none; margin-right: 32px">
+      <li fxLayoutAlign="space-between">
+        <strong>Order subtotal</strong>
+        <strong>{{ subtotal | currency }}</strong>
+      </li>
+      <hr />
+      <li fxLayoutAlign="space-between">
+        <strong>Shipping and handling</strong>
+        <strong>{{ shippingPrice | currency }}</strong>
+      </li>
+      <hr />
+      <li fxLayoutAlign="space-between">
+        <strong>Total</strong>
+        <strong>{{ total | currency }}</strong>
+      </li>
+      <hr />
+    </ul>
+    <!-- <button mat-button>Hello</button> -->
+  </div>
+</div>

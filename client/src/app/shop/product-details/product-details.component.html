@@ -13,11 +13,22 @@
         </div>
         <div fxLayout="row" fxLayoutGap="20px">
           <div fxLayout="row" fxLayoutGap="4px">
-            <mat-icon color="warn">add_circle</mat-icon>
-            <span fxFlexAlign="center" class="quantity-align">2</span>
-            <mat-icon color="warn">remove_circle</mat-icon>
+            <mat-icon color="warn" (click)="incrementQuantity()"
+              >add_circle</mat-icon
+            >
+            <span fxFlexAlign="center" class="quantity-align">{{
+              quantity
+            }}</span>
+            <mat-icon color="warn" (click)="decrementQuantity()"
+              >remove_circle</mat-icon
+            >
           </div>
-          <button mat-raised-button color="primary" class="button-style">
+          <button
+            mat-raised-button
+            color="primary"
+            class="button-style"
+            (click)="addItemToBasket()"
+          >
             Add to Cart
           </button>
         </div>
